@@ -1,0 +1,19 @@
+{
+    "name": "sparkscoding/static-maps",
+    "description": "A PHP library to make working with the Google Static Maps API a little more friendly.",
+    "keywords": ["Google Static Map API", "Maps", "Map", "Google Maps", "Static Maps"],
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Matt Sparks",
+            "email": "matt@sparkscoding.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "SparksCoding\\StaticMaps\\": "src"
+        }
+    }
+}
