@@ -38,7 +38,7 @@ abstract class Builder implements BuilderInterface
      */
     public function addParameter($parameter, $value)
     {
-        $this->uri .= $parameter . '=' . urlencode($value) . '&';
+        $this->uri .= $parameter . '=' . $value . '&';
     }
 
     /**

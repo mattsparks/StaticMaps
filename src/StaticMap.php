@@ -5,6 +5,7 @@ namespace SparksCoding\StaticMaps;
 use SparksCoding\StaticMaps\Components\Map;
 use SparksCoding\StaticMaps\Components\Marker;
 use SparksCoding\StaticMaps\Components\Feature;
+use SparksCoding\StaticMaps\Components\Path;
 
 class StaticMap
 {
@@ -16,6 +17,10 @@ class StaticMap
      * @var string
      */
     public $builder;
+    /**
+     * @var object SparksCoding\StaticMaps\Components\Path
+     */
+    public $path;
     /**
      * @var object SparksCoding\StaticMaps\Components\Map
      */
@@ -69,6 +74,19 @@ class StaticMap
         foreach(func_get_args() as $feature) {
             $this->styles[] = $feature;
         }
+
+        return $this;
+    }
+
+    /**
+     * Add Path
+     *
+     * @param Path $path
+     * @return $this
+     */
+    public function addPath(Path $path)
+    {
+        $this->path = $path;
 
         return $this;
     }

@@ -5,6 +5,16 @@ namespace SparksCoding\StaticMaps\Builders;
 class GoogleStaticMapBuilder extends Builder implements BuilderInterface
 {
     /**
+     * Formats
+     */
+    const ELEMENT_FORMAT = 'element:%s|%s';
+    const PATH_FORMAT = '%s|%s';
+    const POINT_FORMAT = '%s|';
+    const PROPERTY_FORMAT = '%s:%s|';
+    const STYLE_FORMAT = 'feature:%s|%s';
+    const MULTI_STYLE_FORMAT = 'feature:%s|%s|%s';
+
+    /**
      * @var string
      */
     public $baseUri = 'https://maps.googleapis.com/maps/api/staticmap?';
@@ -16,8 +26,8 @@ class GoogleStaticMapBuilder extends Builder implements BuilderInterface
      */
     public function addBaseParameters()
     {
-        foreach(get_object_vars($this->staticMap->map) as $parameter => $value) {
-            if($value) {
+        foreach (get_object_vars($this->staticMap->map) as $parameter => $value) {
+            if ($value) {
                 $this->addParameter($parameter, $value);
             }
         }
@@ -34,35 +44,44 @@ class GoogleStaticMapBuilder extends Builder implements BuilderInterface
     }
 
     /**
+     * Add Path
+     *
+     * @return void
+     */
+    public function addPath()
+    {
+        $properties = get_object_vars($this->staticMap->path);
+        $points     = $this->staticMap->path->points;
+
+        unset($properties['points']);
+
+        $this->addParameter('path', sprintf(
+            self::PATH_FORMAT,
+            $this->format($properties, self::PROPERTY_FORMAT),
+            $this->formatPoints($points)
+        ));
+    }
+
+    /**
      * Add Markers
      *
      * @return void
      */
     public function addMarkers()
     {
-        foreach($this->staticMap->markers as $marker) {
+        foreach ($this->staticMap->markers as $marker) {
             $properties = get_object_vars($marker);
             unset($properties['location']);
 
-            $this->addParameter('markers', $this->formatProperties($properties) . '|' . $marker->location);
+            if ($this->hasNonNullProperties($marker)) {
+                $value = $this->format($properties, self::PROPERTY_FORMAT) . '|' . $marker->location;
+            } else {
+                $value = $marker->location;
+            }
+
+            $this->addParameter('markers', $value);
 
         }
-    }
-
-    /**
-     * Get Element
-     *
-     * @param object
-     * @return string
-     */
-    public function getElement($element)
-    {
-        $properties = get_object_vars($element);
-        unset($properties['name']);
-
-        $value = sprintf('element:%s|%s', $element->name, $this->formatProperties($properties));
-
-        return $value;
     }
 
     /**
@@ -74,25 +93,25 @@ class GoogleStaticMapBuilder extends Builder implements BuilderInterface
     {
         foreach ($this->staticMap->styles as $style) {
             $properties = get_object_vars($style);
-            $elements = $style->elements;
+            $elements   = $style->elements;
 
             unset($properties['name']);
             unset($properties['elements']);
 
-            if($elements) {
+            if ($elements) {
                 foreach ($elements as $element) {
                     $this->addParameter('style', sprintf(
-                        'feature:%s|%s|%s',
+                        self::MULTI_STYLE_FORMAT,
                         $style->name,
-                        $this->formatProperties($properties),
+                        $this->format($properties, self::PROPERTY_FORMAT),
                         $this->getElement($element)
                     ));
                 }
             } else {
                 $this->addParameter('style', sprintf(
-                    'feature:%s|%s',
+                    self::STYLE_FORMAT,
                     $style->name,
-                    $this->formatProperties($properties)
+                    $this->format($properties, self::PROPERTY_FORMATs)
                 ));
             }
         }
@@ -111,6 +130,8 @@ class GoogleStaticMapBuilder extends Builder implements BuilderInterface
         $this->addMarkers();
         // Add styles
         $this->addStyles();
+        // Add Path
+        $this->addPath();
         // Add key
         $this->addKey();
 
@@ -123,16 +144,70 @@ class GoogleStaticMapBuilder extends Builder implements BuilderInterface
      * @param array $params
      * @return string
      */
-    public function formatProperties(array $params)
+    public function format(array $params, $format)
     {
         $temp = '';
 
-        foreach($params as $property => $value) {
-            if($value) {
-                $temp .= sprintf('%s:%s|', $property, $value);
+        foreach ($params as $property => $value) {
+            if ($value) {
+                $temp .= sprintf($format, $property, $value);
             }
         }
 
-        return $temp;
+        return rtrim($temp, '|');
+    }
+
+    /**
+     * Format Points
+     *
+     * @param array $points
+     * @return string
+     */
+    public function formatPoints(array $points)
+    {
+        $temp = '';
+
+        foreach ($points as $point) {
+            $temp .= sprintf(self::POINT_FORMAT, $point);
+        }
+
+        return rtrim($temp, '|');
+    }
+
+    /**
+     * Get Element
+     *
+     * @param object
+     * @return string
+     */
+    public function getElement($element)
+    {
+        $properties = get_object_vars($element);
+        unset($properties['name']);
+
+        $value = sprintf(
+            self::ELEMENT_FORMAT,
+            $element->name,
+            $this->format($properties, self::PROPERTY_FORMAT)
+        );
+
+        return $value;
+    }
+
+    /**
+     * Has Non-Null Properties
+     *
+     * @param $object
+     * @return bool
+     */
+    public function hasNonNullProperties($object)
+    {
+        foreach (get_object_vars($object) as $property => $value) {
+            if ( ! is_null($value)) {
+                return false;
+            }
+        }
+
+        return true;
     }
 }

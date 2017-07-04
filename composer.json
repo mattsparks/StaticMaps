@@ -10,7 +10,6 @@
             "email": "matt@sparkscoding.com"
         }
     ],
-    "require": {},
     "autoload": {
         "psr-4": {
             "SparksCoding\\StaticMaps\\": "src"

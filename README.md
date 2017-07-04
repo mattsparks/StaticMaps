@@ -45,6 +45,17 @@ $staticMap->addStyles(
     )
 );
 
+// Add a path
+$staticMap->addPath(
+  Path::points([
+      'Empire State Building',
+      'Webster Hall',
+      'The Spotted Pig',
+      'The High Line',
+      'Empire State Building',
+  ])->color('0x000000ff')->fillcolor('0xFFFF0033')->weight(2)
+);
+
 echo '<img src="' . $staticMap->uri() . '">';
 ```
 Output:
@@ -58,4 +69,3 @@ Documentation for Static Maps is currently in progress.
 ## To-Do
 
 * Documentation
-* Add support for paths
