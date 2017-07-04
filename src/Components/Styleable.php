@@ -42,6 +42,7 @@ class Styleable
      * Color
      *
      * @param $color
+     *
      * @return $this
      */
     public function color($color)
@@ -55,6 +56,7 @@ class Styleable
      * Gama
      *
      * @param $gama
+     *
      * @return $this
      */
     public function gama($gama)
@@ -68,6 +70,7 @@ class Styleable
      * Hue
      *
      * @param $hue
+     *
      * @return $this
      */
     public function hue($hue)
@@ -93,6 +96,7 @@ class Styleable
      * Invert Lightness
      *
      * @param $invertLightness
+     *
      * @return $this
      */
     public function invertLightness($invertLightness)
@@ -106,6 +110,7 @@ class Styleable
      * Lightness
      *
      * @param $lightness
+     *
      * @return $this
      */
     public function lightness($lightness)
@@ -121,6 +126,7 @@ class Styleable
      * Named Constructor
      *
      * @param $name
+     *
      * @return static
      */
     public static function name($name)
@@ -132,6 +138,7 @@ class Styleable
      * Saturation
      *
      * @param $saturation
+     *
      * @return $this
      */
     public function saturation($saturation)
@@ -145,6 +152,7 @@ class Styleable
      * Visibility
      *
      * @param $visibility
+     *
      * @return $this
      */
     public function visibility($visibility)
@@ -158,6 +166,7 @@ class Styleable
      * Weight
      *
      * @param $weight
+     *
      * @return $this
      */
     public function weight($weight)

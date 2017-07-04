@@ -27,7 +27,7 @@ abstract class Builder implements BuilderInterface
     public function __construct(StaticMap $staticMap)
     {
         $this->staticMap = $staticMap;
-        $this->uri = $this->baseUri;
+        $this->uri       = $this->baseUri;
     }
 
     /**

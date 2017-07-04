@@ -42,6 +42,7 @@ class Map
      * Center
      *
      * @param $location
+     *
      * @return $this
      */
     public function center($location)
@@ -67,6 +68,7 @@ class Map
      * Format
      *
      * @param $format
+     *
      * @return $this
      */
     public function format($format)
@@ -80,6 +82,7 @@ class Map
      * Language
      *
      * @param $language
+     *
      * @return $this
      */
     public function language($language)
@@ -93,6 +96,7 @@ class Map
      * Region
      *
      * @param $region
+     *
      * @return $this
      */
     public function region($region)
@@ -106,6 +110,7 @@ class Map
      * Scale
      *
      * @param $scale
+     *
      * @return $this
      */
     public function scale($scale)
@@ -120,6 +125,7 @@ class Map
      *
      * @param int $width
      * @param int $height
+     *
      * @return $this
      */
     public function size(int $width, int $height)
@@ -133,6 +139,7 @@ class Map
      * Type
      *
      * @param $type
+     *
      * @return $this
      */
     public function type($type)
@@ -146,6 +153,7 @@ class Map
      * Zoom
      *
      * @param $zoom
+     *
      * @return $this
      */
     public function zoom($zoom)

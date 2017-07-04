@@ -28,11 +28,12 @@ class Feature extends Styleable
      * Elements
      *
      * @param $element
+     *
      * @return $this
      */
     public function elements($element)
     {
-        foreach(func_get_args() as $element) {
+        foreach (func_get_args() as $element) {
             $this->elements[] = $element;
         }
 

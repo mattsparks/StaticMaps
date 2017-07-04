@@ -8,6 +8,7 @@ class Element extends Styleable
      * @var string
      */
     public $name = null;
+
     /**
      * Element constructor.
      *

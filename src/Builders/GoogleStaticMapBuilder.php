@@ -142,6 +142,7 @@ class GoogleStaticMapBuilder extends Builder implements BuilderInterface
      * Format Properties
      *
      * @param array $params
+     *
      * @return string
      */
     public function format(array $params, $format)
@@ -161,6 +162,7 @@ class GoogleStaticMapBuilder extends Builder implements BuilderInterface
      * Format Points
      *
      * @param array $points
+     *
      * @return string
      */
     public function formatPoints(array $points)
@@ -178,6 +180,7 @@ class GoogleStaticMapBuilder extends Builder implements BuilderInterface
      * Get Element
      *
      * @param object
+     *
      * @return string
      */
     public function getElement($element)
@@ -198,6 +201,7 @@ class GoogleStaticMapBuilder extends Builder implements BuilderInterface
      * Has Non-Null Properties
      *
      * @param $object
+     *
      * @return bool
      */
     public function hasNonNullProperties($object)

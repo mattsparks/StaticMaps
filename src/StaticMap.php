@@ -52,11 +52,12 @@ class StaticMap
      * Add Markers
      *
      * @param Marker $markers
+     *
      * @return $this
      */
     public function addMarkers(Marker $markers)
     {
-        foreach(func_get_args() as $marker) {
+        foreach (func_get_args() as $marker) {
             $this->markers[] = $marker;
         }
 
@@ -67,11 +68,12 @@ class StaticMap
      * Add Styles
      *
      * @param Feature $features
+     *
      * @return $this
      */
     public function addStyles(Feature $features)
     {
-        foreach(func_get_args() as $feature) {
+        foreach (func_get_args() as $feature) {
             $this->styles[] = $feature;
         }
 
@@ -82,6 +84,7 @@ class StaticMap
      * Add Path
      *
      * @param Path $path
+     *
      * @return $this
      */
     public function addPath(Path $path)
@@ -107,6 +110,7 @@ class StaticMap
      * Named Constructor
      *
      * @param $key
+     *
      * @return static
      */
     public static function key($key)
@@ -118,6 +122,7 @@ class StaticMap
      * Set Builder
      *
      * @param $builder
+     *
      * @return $this
      */
     public function setBuilder($builder)
@@ -131,6 +136,7 @@ class StaticMap
      * Set Map
      *
      * @param Map $map
+     *
      * @return $this
      */
     public function setMap(Map $map)
@@ -147,7 +153,7 @@ class StaticMap
      */
     public function uri()
     {
-        if($this->uri === null) {
+        if ($this->uri === null) {
             $this->uri = $this->buildUri();
         }
 

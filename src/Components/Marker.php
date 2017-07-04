@@ -44,6 +44,7 @@ class Marker
      * Anchor
      *
      * @param $anchor
+     *
      * @return $this
      */
     public function anchor($anchor)
@@ -57,6 +58,7 @@ class Marker
      * Color
      *
      * @param $color
+     *
      * @return $this
      */
     public function color($color)
@@ -70,6 +72,7 @@ class Marker
      * Label
      *
      * @param $label
+     *
      * @return $this
      */
     public function label($label)
@@ -83,6 +86,7 @@ class Marker
      * Location
      *
      * @param $location
+     *
      * @return static
      */
     public static function location($location)
@@ -94,6 +98,7 @@ class Marker
      * Icon
      *
      * @param $icon
+     *
      * @return $this
      */
     public function icon($icon)
@@ -107,6 +112,7 @@ class Marker
      * Size
      *
      * @param $size
+     *
      * @return $this
      */
     public function size($size)
