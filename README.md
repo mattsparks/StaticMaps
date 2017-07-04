@@ -65,4 +65,4 @@ Output:
 
 ## Documentation
 
-Documentation, including intallation instructions and examples, can be found on the [Wiki](https://github.com/mattsparks/StaticMaps/wiki).
+Documentation, including installation instructions and examples, can be found on the [Wiki](https://github.com/mattsparks/StaticMaps/wiki).
