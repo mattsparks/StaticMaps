@@ -18,6 +18,7 @@ use SparksCoding\StaticMaps\Components\Map;
 use SparksCoding\StaticMaps\Components\Marker;
 use SparksCoding\StaticMaps\Components\Feature;
 use SparksCoding\StaticMaps\Components\Element;
+use SparksCoding\StaticMaps\Components\Path;
 
 // Initialize the map by adding your API key
 $staticMap = StaticMap::key('123yOUrAPIkeYGoeSHerE123');
