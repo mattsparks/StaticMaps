@@ -65,8 +65,4 @@ Output:
 
 ## Documentation
 
-Documentation for Static Maps is currently in progress. 
-
-## To-Do
-
-* Documentation
+Documentation, including intallation instructions and examples, can be found on the [Wiki](https://github.com/mattsparks/StaticMaps/wiki).
