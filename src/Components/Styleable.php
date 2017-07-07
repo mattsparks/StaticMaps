@@ -20,7 +20,7 @@ class Styleable
     /**
      * @var string
      */
-    public $invert_lightness = null;
+    public $invertLightness = null;
     /**
      * @var string
      */
@@ -101,7 +101,7 @@ class Styleable
      */
     public function invertLightness($invertLightness)
     {
-        $this->invert_lightness = $invertLightness;
+        $this->invertLightness = $invertLightness;
 
         return $this;
     }

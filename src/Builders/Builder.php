@@ -11,6 +11,14 @@ abstract class Builder implements BuilderInterface
      */
     protected $baseUri;
     /**
+     * @var array
+     */
+    protected $parameterMap = [];
+    /**
+     * @var array
+     */
+    protected $propertyMap = [];
+    /**
      * @var StaticMap
      */
     protected $staticMap;
@@ -38,7 +46,37 @@ abstract class Builder implements BuilderInterface
      */
     public function addParameter($parameter, $value)
     {
-        $this->uri .= $parameter . '=' . urlencode($value) . '&';
+        $this->uri .= $this->mapParameter($parameter) . '=' . urlencode($value) . '&';
+    }
+
+    /**
+     * Map Parameter
+     *
+     * @param $parameter
+     * @return mixed
+     */
+    public function mapParameter($parameter)
+    {
+        if (array_key_exists($parameter, $this->parameterMap)) {
+            return $this->parameterMap[$parameter];
+        }
+
+        return $parameter;
+    }
+
+    /**
+     * Map Property
+     *
+     * @param $property
+     * @return mixed
+     */
+    public function mapProperty($property)
+    {
+        if (array_key_exists($property, $this->propertyMap)) {
+            return $this->propertyMap[$property];
+        }
+
+        return $property;
     }
 
     /**

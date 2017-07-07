@@ -15,6 +15,13 @@ class GoogleStaticMapBuilder extends Builder implements BuilderInterface
     const MULTI_STYLE_FORMAT = 'feature:%s|%s|%s';
 
     /**
+     * @var array
+     */
+    protected $propertyMap = [
+      'invertLightness' => 'invert_lightness'
+    ];
+
+    /**
      * @var string
      */
     public $baseUri = 'https://maps.googleapis.com/maps/api/staticmap?';
@@ -50,6 +57,10 @@ class GoogleStaticMapBuilder extends Builder implements BuilderInterface
      */
     public function addPath()
     {
+        if(!$this->staticMap->path) {
+            return;
+        }
+
         $properties = get_object_vars($this->staticMap->path);
         $points     = $this->staticMap->path->points;
 
@@ -151,7 +162,7 @@ class GoogleStaticMapBuilder extends Builder implements BuilderInterface
 
         foreach ($params as $property => $value) {
             if ($value) {
-                $temp .= sprintf($format, $property, $value);
+                $temp .= sprintf($format, $this->mapProperty($property), $value);
             }
         }
 
